@@ -13,13 +13,16 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            overflow: hidden;
+            padding: 20px; /* Añadimos algo de espacio interno */
+            overflow-y: auto; /* Permite el scroll si hay mucho contenido */
+            box-sizing: border-box;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            text-align: center;
             color: #ff99cc;
             animation: fadeIn 2s ease-in-out;
         }
@@ -44,11 +47,15 @@
 
         #message {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             text-align: center;
             margin-top: 20px;
             line-height: 1.5;
             animation: fadeIn 1.5s ease-in-out;
+        }
+
+        audio {
+            margin-top: 20px;
         }
 
         @keyframes fadeIn {
@@ -64,14 +71,31 @@
     </style>
 </head>
 <body>
-    <h1>¡Feliz Cumpleaños, MARIIIII!</h1>
+    <h1>¡Feliz Cumpleaños, MARIII!</h1>
     <button onclick="showMessage()">&lt;3</button>
-    <div id="message">Espero te encuentres bien, Mari. Quiero recordarte lo importante que eres para mí. Eres una persona increíble y que ha influído bastante en mí, siempre estás ahí para lo que necesite, tu amistad en mi vida es súper importante para mí, a pesar de no hablar todos los días, cada vez que hablo contigo es una conexión única, a pesar de ese lapso de tiempo, nuestra amistad sigue brillando y es aún más fuerte. Espero que este día esté lleno de sorpresas. Gracias por siempre ser tú misma, por estar siempre y por hacer cada conversación que tenemos en algo especial, aunque sean pocas.</div>
+    <div id="message">
+        Espero te encuentres bien, Mari. Quiero recordarte lo importante que eres para mí. 
+        Eres una persona increíble y que ha influido bastante en mí. 
+        Tu amistad en mi vida es súper importante, y siempre estás ahí para lo que necesite. 💖
+    </div>
+
+    <!-- Audio -->
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="tu_audio.mp3" type="audio/mp3">
+        Tu navegador no soporta audio HTML5.
+    </audio>
 
     <script>
+        // Mostrar el mensaje
         function showMessage() {
             const message = document.getElementById('message');
             message.style.display = 'block';
+        }
+
+        // Controlar el volumen del audio
+        window.onload = function() {
+            const audio = document.getElementById('backgroundMusic');
+            audio.volume = 0.2; // Configura el volumen (0.0 a 1.0)
         }
     </script>
 </body>
